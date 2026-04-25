@@ -8,21 +8,20 @@
 const net = require('net')
 
 // Helper to zero-pad a number to 2 digits (e.g. 7 -> "07").
-function pad(n) {
-  return n < 10 ? '0' + n : '' + n
+function pad(n) {                  //Ternary Operator: https://www.w3schools.com/js/js_if_ternary.asp
+  return n < 10 ? '0' + n : '' + n //also converts 2 digits numbers to string
 }
 
 // net.createServer() creates a TCP server. The callback is the connection
 // listener — it is called once per incoming connection with a socket object.
 // The socket is a duplex stream: it can be read from and written to.
 const server = net.createServer(function(socket) {
-  var now = new Date()
+  var now = new Date()  //Date exists in any JS environment https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 
   // Build the required "YYYY-MM-DD hh:mm" format from individual Date methods.
-  // getMonth() is zero-based (Jan = 0), so we add 1.
   var formatted =
     now.getFullYear() + '-' +
-    pad(now.getMonth() + 1) + '-' +
+    pad(now.getMonth() + 1) + '-' + //getMonth() is zero-indexed, hence +1
     pad(now.getDate()) + ' ' +
     pad(now.getHours()) + ':' +
     pad(now.getMinutes())
