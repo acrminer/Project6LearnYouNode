@@ -32,4 +32,5 @@ const server = net.createServer(function(socket) {
 })
 
 // Start the server on the port passed as the first command-line argument.
-server.listen(Number(process.argv[2]))
+server.listen(Number(process.argv[2])) //Binds the server to the port supplied as the first command line argument
+// https://nodejs.org/api/net.html#serverlistenport-host-backlog-callback
